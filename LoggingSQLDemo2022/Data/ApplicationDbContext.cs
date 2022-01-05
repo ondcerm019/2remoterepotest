@@ -13,8 +13,12 @@ namespace LoggingSQLDemo2022.Data
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
-        public ApplicationDbContext() : base() { }
+        public ApplicationDbContext() : base() {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
